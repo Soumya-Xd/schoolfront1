@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="navbar">
+      <div class="logo"> School</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Faculty & Staff</a></li>
+          <li><a href="#">Admissions</a></li>
+          <li><a href="#">Academics</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1>Welcome to  School</h1>
+        <p>We strive for excellence through <span>Community, Integrity,</span> and <span>Diligence.</span></p>
+        <button class="apply-btn">Apply Now</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="description" id="about-section">
+      <!-- About Section content will be dynamically inserted here -->
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog-section">
+      <div class="container">
+        <h2>Latest Blogs</h2>
+        <div class="blog-posts" id="blog-posts">
+          <!-- Blog posts will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span>  School. All Rights Reserved.</p>
+      <p>
+        Designed with ❤️ by REDALPHA Team | 
+        <a href="#privacy-policy">Privacy Policy</a> | 
+        <a href="#terms-of-service">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle Menu for Small Screens
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Hero Section Background Slideshow
+    const hero = document.getElementById('hero');
+    const images = [
+      'aa.jpg', // Replace with your actual image URLs
+      'bb.jpg',
+      'dd.jpg',
+      'tt.jpg'
+    ];
+    let index = 0;
+
+    function changeBackground() {
+      hero.style.backgroundImage = `url(${images[index]})`;
+      index = (index + 1) % images.length; // Loop back to the first image
+    }
+    setInterval(changeBackground, 5000); // Change image every 5 seconds
+
+    // Dynamic Year in Footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dynamic Content for About Section
+    const aboutContent = `
+      <div class="container">
+        <h2>About  School</h2>
+        <p>
+           School is committed to providing a high-quality education that empowers students to achieve their full potential. 
+          We emphasize academic excellence, character development, and a nurturing environment where every student feels valued and inspired.
+        </p>
+        <p>
+          Our dedicated faculty and staff work collaboratively to foster a strong sense of community, uphold the values of integrity, 
+          and promote diligence in every aspect of learning. At School, we believe in creating lifelong learners and responsible global citizens.
+        </p>
+      </div>
+    `;
+    document.getElementById("about-section").innerHTML = aboutContent;
+
+    // Dynamic Content for Blog Section
+    const blogs = [
+      {
+        title: "Top 5 Tips for Academic Success",
+        description: "Discover key strategies to help students excel in their studies and achieve their goals...",
+        link: "#",
+      },
+      {
+        title: "The Importance of Character Development",
+        description: "Learn why building strong character traits is essential for success in school and beyond...",
+        link: "#",
+      },
+      {
+        title: "How School Fosters Community Engagement",
+        description: "Explore how we encourage students and families to play an active role in the school community...",
+        link: "#",
+      },
+    ];
+
+    const blogPostsContainer = document.getElementById("blog-posts");
+    blogs.forEach(blog => {
+      const blogPost = `
+        <article class="blog-post">
+          <h3>${blog.title}</h3>
+          <p>${blog.description}</p>
+          <a href="${blog.link}">Read More</a>
+        </article>
+      `;
+      blogPostsContainer.innerHTML += blogPost;
+    });
+  </script>
+</body>
+</html>
